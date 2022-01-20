@@ -39,4 +39,4 @@ jobs:
           TESTCONTAINERS_RYUK_DISABLED: true
         run: |
           export DOCKER_IMAGE=`echo "${DOCKER_REGISTRY_URL}/${DOCKER_USERNAME}/proxmox-api" | sed -e 's#//#/#' -e 's#^/##'`
-          sudo ./gradlew check dockerPushNative --no-daemon
+          ./gradlew check dockerPushNative --no-daemon
