@@ -19,8 +19,7 @@ class ProxmoxApiCommandTest {
 
         val args = arrayOf("-v")
         PicocliRunner.run(ProxmoxApiCommand::class.java, ctx, *args)
-
-        assertTrue(byteArray.toString().contains("Hi!"))
+        assertTrue(byteArray.toString().contains("Testing..."))
 
         ctx.close()
     }

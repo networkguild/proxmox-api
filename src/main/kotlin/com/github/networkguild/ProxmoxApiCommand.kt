@@ -18,14 +18,16 @@ class ProxmoxApiCommand : Runnable {
     private var verbose : Boolean = false
 
     @Option(names = ["-g", "--get"], description = ["Get token from the cluster, specify ip e.g. -g 192.168.1.10"])
-    private lateinit var get : String
+    private var get : String? = null
 
     override fun run() {
-        val logger = if (verbose) LoggerFactory.getLogger(javaClass) else null
+        val logger = LoggerFactory.getLogger(javaClass)
 
-        if (get.isNotEmpty()) {
-            logger?.info("Getting token from cluster!")
-            proxmoxController.getTokenData(get)
+        if (!get.isNullOrEmpty()) {
+            logger.info("Getting token from cluster!")
+            proxmoxController.getTokenData(get!!)
+        } else {
+            logger.info("Testing...")
         }
 
     }
