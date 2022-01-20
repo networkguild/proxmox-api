@@ -34,9 +34,12 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: Build And Push Docker Image
+        uses: gradle/gradle-build-action@v1
+        with:
+          gradle-version: 7.3.3
         env:
           DOCKER_REGISTRY_URL: registry.hub.docker.com
           TESTCONTAINERS_RYUK_DISABLED: true
         run: |
           export DOCKER_IMAGE=`echo "${DOCKER_REGISTRY_URL}/${DOCKER_USERNAME}/proxmox-api" | sed -e 's#//#/#' -e 's#^/##'`
-          ./gradlew check dockerPushNative --no-daemon
+          gradle check dockerPushNative --no-daemon
