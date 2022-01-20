@@ -17,7 +17,7 @@ class ProxmoxApiCommand : Runnable {
     @Option(names = ["-v", "--verbose"], description = ["Verbose logging"])
     private var verbose : Boolean = false
 
-    @Option(names = ["-g", "--get"], description = ["Get token from the cluster, specify ip -g 1.1.1.1"])
+    @Option(names = ["-g", "--get"], description = ["Get token from the cluster, specify ip e.g. -g 192.168.1.10"])
     private lateinit var get : String
 
     override fun run() {

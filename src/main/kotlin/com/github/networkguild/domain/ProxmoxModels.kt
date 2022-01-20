@@ -13,4 +13,3 @@ data class Token(
         val username: String
     )
 }
- .git

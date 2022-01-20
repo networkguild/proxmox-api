@@ -61,11 +61,11 @@ tasks {
             jvmTarget = "17"
         }
     }
-//    dockerBuild {
-//        images = ["${System.env.DOCKER_IMAGE ?: project.name}:${project.version}"]
-//    }
+    dockerBuild {
+        images.add("${System.getenv("DOCKER_IMAGE") ?: project.name}:${project.version}")
+    }
 
-//    dockerBuildNative {
-//        images = ["${System.env.DOCKER_IMAGE ?: project.name}:${project.version}"]
-//    }
+    dockerBuildNative {
+        images.add("${System.getenv("DOCKER_IMAGE") ?: project.name}:${project.version}")
+    }
 }
